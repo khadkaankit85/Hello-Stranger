@@ -1,4 +1,7 @@
 const socket = io()
+const SentChatDiv = document.createElement("div").innerHTML(<>
+</>)
+
 // let's handle some common connection errors
 socket.on('error', (socket) => {
     setTimeout(() => {

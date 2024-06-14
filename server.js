@@ -43,7 +43,7 @@ io.on("connection", (socket) => {
         io.to(myCompanion).emit("Notification", "A user found for you")
     })
 
-    socket.on("private message", ())
+    socket.on("private message", (message))
 })
 
 app.listen(PORT, () => {
