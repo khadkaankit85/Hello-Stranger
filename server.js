@@ -1,18 +1,17 @@
-const express = require("express")
-const { Server } = require("socket.io")
-const http = require("http")
+const express = require('express');
+const http = require('http');
+const { Server } = require('socket.io');
+
 const path = require("path")
-require("dotenv").config()
 
-const app = express()
-const server = http.createServer(app)
+const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
 
-const PORT = process.env.PORT || 3000
+// Serve static files from the "public" directory
+app.use(express.static(__dirname + '/Public'));
 
-const io = new Server(server)
-
-app.use(express.static(path.join("Public")))
-
+// Socket.IO automatically serves the client library from /socket.io/socket.io.js
 app.get("/home", (req, res) => {
     console.log("req received")
     res.sendFile(path.join(__dirname, "Pages", "home.html"))
@@ -22,23 +21,19 @@ app.get("/chat", (req, res) => {
     res.sendFile(path.join(__dirname, "Pages", "chatting.html"))
 })
 
+io.on('connection', (socket) => {
+    console.log('a user connected:', socket.id);
 
-// to check if there is any waiting sockets 
-let waitingSocket = null
-io.on("connection", (socket) => {
-    if (waitingSocket) {
-        let user2 = waitingSocket.socket.id
-        socket.on("private message", (message) => {
-            console.log("private message to someone", message)
-            io.to(user2).emit("private message", message)
-        })
-    }
-    else {
-        waitingSocket = socket
-    }
+    socket.on('message', (msg) => {
+        console.log('message: ' + msg);
+        io.emit('message', msg);
+    });
 
+    socket.on('disconnect', () => {
+        console.log('user disconnected:', socket.id);
+    });
+});
 
-})
-app.listen(PORT, () => {
-    console.log(`server is live on http://localhost:${PORT}`)
-})
+server.listen(3000, () => {
+    console.log('listening on *:3000');
+});
