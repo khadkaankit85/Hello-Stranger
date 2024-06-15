@@ -23,29 +23,22 @@ app.get("/chat", (req, res) => {
 })
 
 
-// logic to handle socket things
+// to check if there is any waiting sockets 
+let waitingSocket = null
 io.on("connection", (socket) => {
-    let connectedUserId = []
-    connectedUserId.push(socket.id)
+    if (waitingSocket) {
+        let user2 = waitingSocket.socket.id
+        socket.on("private message", (message) => {
+            console.log("private message to someone", message)
+            io.to(user2).emit("private message", message)
+        })
+    }
+    else {
+        waitingSocket = socket
+    }
 
-    console.log("finally an user is connected")
-    // 
 
-    socket.on('join', (userId) => {
-        let myID = userId
-        let mySocketIndex = connectedUserId.indexOf(myID)
-        let indexOfCompanion = Math.floor(Math.random() * connectedUserId.length)
-        while (indexOfCompanion == mySocketIndex) {
-            indexOfCompanion = Math.floor(Math.random() * connectedUserId.length)
-        }
-        let myCompanion = connectedUserId[index]
-        io.to(myID).emit("Notification", "A user found for you")
-        io.to(myCompanion).emit("Notification", "A user found for you")
-    })
-
-    socket.on("private message", (message))
 })
-
 app.listen(PORT, () => {
     console.log(`server is live on http://localhost:${PORT}`)
 })
