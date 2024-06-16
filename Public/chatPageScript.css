@@ -1,3 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+
+#main-section-id {
+    border: 1px solid black;
+    width: 97dvw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: center; */
+    overflow: auto;
+}
+
+#chat-section-id {
+    width: 80vw;
+    height: 700px;
+    border: 1px solid red;
+}
+
+#chat-with-strangers {
+    margin: 10px 0px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.sentChat,
+.receivedChat {
+    display: flex;
+    height: fit-content;
+    border: hidden;
+    margin: 10px 0px;
+    width: 100%;
+}
+
+.sentChatInnerText,
+.receivedChatInnertext {
+    padding: 15px;
+    max-width: 500px;
+    height: fit-content;
+    border-radius: 20px;
+    color: white;
+}
+
+.sentChatInnerText {
+    background-color: rgb(73, 73, 250);
+    margin-left: 10px;
+
+}
+
+.receivedChatInnertext {
+    background-color: rgb(78, 77, 77);
+
+}
+
+.sentChat {
+    display: flex;
+    justify-content: right;
+    align-items: flex-end;
+    margin-right: 0px;
+}
+
+.receivedChat {
+    justify-content: left;
+    align-items: flex-start;
+
+}
+
+#chat-section-id {
+    position: absolute;
+    overflow: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#chat-section-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 0px;
+    left: auto
+}
+
+#chat-section-form>input {
+    padding: 4px;
+    width: 55%;
+    height: fit-content;
+    border-radius: 10px;
+}
+
+/* 
 h1 {
     color: red;
 }
+
+
+#TextReceived {
+    background-color: rgb(121, 121, 248);
+    color: black;
+    text-align: start;
+    padding: 10px;
+    margin: 10px 0px 20px 10px;
+    width: fit-content;
+    display: block;
+    height: fit-content;
+}
+
+#TextSent {
+    background-color: rgb(245, 153, 153);
+    color: black;
+    text-align: end;
+    padding: 10px;
+    width: fit-content;
+    display: block;
+    height: fit-content;
+    margin: 5px 10px 10px 0px;
+
+
+}
+
+#Alert_to_the_User {
+    color: red;
+
+}
+
+#Main-chat-Body {
+    width: 500px;
+    height: 600px;
+    border: 2px solid black;
+    padding: 5px;
+    overflow: auto;
+} */
