@@ -13,7 +13,7 @@ const io = new Server(server);
 app.use(express.static(__dirname + '/Public'));
 
 // Socket.IO automatically serves the client library from /socket.io/socket.io.js
-app.get("/home", (req, res) => {
+app.get("/", (req, res) => {
     console.log("req received")
     res.sendFile(path.join(__dirname, "Pages", "home.html"))
 })
