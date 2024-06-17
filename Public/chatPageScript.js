@@ -8,6 +8,7 @@ function sentChatElement(message) {
     //     </p>
     // </div>`
     // return element
+
     let divElement = document.createElement("div")
     divElement.className = "sentChat"
 
@@ -53,12 +54,31 @@ function checkConnection() {
     }
 }
 
+
+
 const socket = io()
 const mainChat = document.getElementById("Main-chat-Body")
 const formOfinput = document.getElementById("chat-section-form")
 const messageInput = document.getElementById("chat-typing-inputbox")
 const bodyOfTheChattingPage = document.getElementById("chat-section-body")
 const Loader = document.getElementById("loaderDiv")
+
+
+const sendButton = document.getElementById("sendMessageButton")
+
+function checkSendButton() {
+    if (messageInput.value.trim("") == "" || !messageInput.value) {
+        sendButton.innerText = "👍"
+    }
+    else {
+        sendButton.innerText = "⏩"
+    }
+}
+messageInput.addEventListener('input', () => {
+    checkSendButton()
+})
+
+const chatSectionToScroll = document.getElementById("chat-section-id")
 
 
 document.getElementById("notLoader").style.display = "hidden"
@@ -99,16 +119,31 @@ formOfinput.addEventListener("submit", (e) => {
         console.log("message sent")
         e.preventDefault()
         let message = messageInput.value
-        socket.emit("private message", { destSocket, message })
+        if (message.trim("") == "") {
+            message = "👍"
+        }
 
-        // to create a new chat paragraph
-        bodyOfTheChattingPage.appendChild(sentChatElement(message))
 
-        messageInput.value = ""
+        {
+            socket.emit("private message", { destSocket, message })
+
+            // to create a new chat paragraph
+            bodyOfTheChattingPage.appendChild(sentChatElement(message))
+
+
+            // for scrolling behaviour
+            chatSectionToScroll.scrollTo({
+                left: 0,
+                top: bodyOfTheChattingPage.scrollHeight,
+                behavior: 'smooth'
+            });
+
+            messageInput.value = ""
+            checkSendButton()
+
+        }
     }
-    else {
-        console.log("No companion for you at the moment")
-    }
+
 })
 
 socket.on("private message", (message) => {
@@ -118,6 +153,17 @@ socket.on("private message", (message) => {
     // newText.id = "TextReceived"
     // newText.textContent = message
     bodyOfTheChattingPage.appendChild(receivedChatElement(message))
+    // document..scrollTo(0, window.scrollY + 200);
+
+
+    // for scrolling behaviour
+    chatSectionToScroll.scrollTo({
+        left: 0,
+        top: bodyOfTheChattingPage.scrollHeight,
+        behavior: 'smooth'
+    });
+
+
     console.log("private message from the server: ", message)
 })
 

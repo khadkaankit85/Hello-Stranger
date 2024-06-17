@@ -6,10 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatting</title>
     <link rel="stylesheet" href="chatPageScript.css">
+    <!-- <link rel="stylesheet" href="../Public/chatPageScript.css"> -->
 </head>
 
 <body>
     <div id="notLoader">
+        <div id="backgroundImageFilter">
+
+        </div>
         <div id="chat-with-strangers">Chat with Strangers</div>
         <div id="main-section-id">
             <div id="chat-section-id">
@@ -41,7 +45,10 @@
                 </div>
                 <form id="chat-section-form">
                     <input type="text" id="chat-typing-inputbox">
-                    <button form="chat-section-form" type="submit">Send</button>
+
+                    <button id="sendMessageButton" form="chat-section-form" type="submit">
+                        👍
+                    </button>
 
                 </form>
 
@@ -85,6 +92,21 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="/chatPageScript.js"></script>
+    <!-- <script>
+
+        const sendButton = document.getElementById("sendMessageButton")
+        const messageInput = document.getElementById("chat-typing-inputbox")
+
+        messageInput.addEventListener('input', () => {
+            console.log("focused in the text field")
+            if (messageInput.value.trim("") == "") {
+                sendButton.innerText = "👍"
+            }
+            else {
+                sendButton.innerText = "⏩"
+            }
+        })
+    </script> -->
 
 </body>
 

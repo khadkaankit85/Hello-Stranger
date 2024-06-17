@@ -4,11 +4,29 @@
 
 }
 
+body {
+    background: url("https://getwallpapers.com/wallpaper/full/d/3/a/513083.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(10, 10, 78);
+}
+
+#backgroundImageFilter {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 255, 0.5), rgba(0, 0, 0, 0.5), rgba(255, 0, 0, 0.5));
+    z-index: 0;
+    backdrop-filter: blur(5px);
+}
+
 
 #main-section-id {
     border: 1px solid black;
     width: 97dvw;
-    height: 100vh;
+    height: 93dvh;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -18,8 +36,7 @@
 
 #chat-section-id {
     width: 80vw;
-    height: 700px;
-    border: 1px solid red;
+    height: 630px;
 }
 
 #chat-with-strangers {
@@ -80,6 +97,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    background-color: black;
 }
 
 #chat-section-form {
@@ -88,14 +106,66 @@
     align-items: center;
     position: relative;
     bottom: 0px;
-    left: auto
+    left: auto;
+    gap: 15px;
 }
 
+textarea:focus,
+input:focus {
+    outline: none;
+    color: white;
+    font-size: 18px;
+}
+
+#sendMessageButton {
+    background: none;
+    border: none;
+    font-size: 25px;
+}
+
+/* #sendMessageButton {
+    background: none;
+    border: none;
+} */
+
+
 #chat-section-form>input {
+    font-family: monospace;
     padding: 4px;
     width: 55%;
     height: fit-content;
     border-radius: 10px;
+    min-height: 25px;
+    background: #5e5e5e;
+    color: white;
+
+
+}
+
+/* to change the scrollbar */
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+    /* Width of the scrollbar */
+}
+
+/* Track (background) of the scrollbar */
+.sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Color of the scrollbar track */
+}
+
+/* Handle (thumb) of the scrollbar */
+.sidebar::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Color of the scrollbar thumb */
+    border-radius: 5px;
+    /* Rounded corners of the thumb */
+}
+
+/* Handle on hover */
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Color of the scrollbar thumb on hover */
 }
 
 /* 
