@@ -46,9 +46,9 @@ function receivedChatElement(message) {
 function checkConnection() {
     // whenever called, updates the alert: connecting, connected, disconnected
     if (hasCompanion) {
-        Loader.style.display = "hidden"
+        Loader.style.display = "none"
     }
-    else {
+    if (!hasCompanion) {
         Loader.style.display = "flex"
     }
 }
@@ -60,22 +60,20 @@ const messageInput = document.getElementById("chat-typing-inputbox")
 const bodyOfTheChattingPage = document.getElementById("chat-section-body")
 const Loader = document.getElementById("loaderDiv")
 
-Loader.style.display = "hidden"
-console.log("the loader is", Loader)
 
 document.getElementById("notLoader").style.display = "hidden"
 // document.getElementById("loader").style.display = "block"
 
 let destSocket = ""
 let hasCompanion = false
-checkConnection()
+// checkConnection()
 
 socket.on("Your Companion Is", (message) => {
     if (message.status === 2001) {
         console.log("user 2 ", message.CompanionID)
         if (message.status == 4001) {
             setTimeout(() => {
-                socket.connect()
+                socket = io()
             }, 7000)
         }
         destSocket = message.CompanionID
@@ -130,6 +128,7 @@ socket.on("Your Companion Is", (message) => {
 socket.on("Find Someone New", (message) => {
     destSocket = ""
     hasCompanion = false
+    checkConnection()
 })
 
 

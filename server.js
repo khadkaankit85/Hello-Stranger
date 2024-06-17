@@ -42,8 +42,12 @@ io.on('connection', (socket) => {
 
     socket.on("private message", (data) => {
         io.to(data.destSocket).emit("private message", data.message)
-
     })
+
+
+
+
+
 
 
     // console.log('A new user is Connected to the world chat with socket id: ', socket.id);
@@ -79,6 +83,7 @@ io.on('connection', (socket) => {
         io.emit("Find Someone New", { message: "Find Someone New", status: 2002 })
         waitingSocketID = ""
     });
+
 
     socket.on("reset sockets", () => {
         io.emit("reset socket")
