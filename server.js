@@ -23,12 +23,14 @@ app.get("/chat", (req, res) => {
 })
 // these two should be initialised outside because if initialized inside on connection event, it will reinitialised everytime a new user connects
 let waitingSocketID = ""
+let user1 = ""
 
 io.on('connection', (socket) => {
     console.log('connected')
     // if someone is waiting to chat
     if (waitingSocketID) {
         // we share the socket id of users with each other
+        user1 = socket.id
         io.to(socket.id).emit("Your Companion Is", { myID: socket.id, CompanionID: waitingSocketID, status: 2001 })
         io.to(waitingSocketID).emit("Your Companion Is", { myID: waitingSocketID, CompanionID: socket.id, status: 2001 })
         waitingSocketID = ""
@@ -78,13 +80,12 @@ io.on('connection', (socket) => {
         // more optimised approach to reset sockets here
         // if the waiting user leaves the chat
         if (socket.id == waitingSocketID) {
-            waitingSocketID = ""
+            if (user1) {
+                waitingSocketID = user1
+            }
         }
 
-        // if socket leaves the chat
-        if (socket.id != waitingSocketID) {
-            waitingSocketID = socket.id
-        }
+
     });
 
 

@@ -112,12 +112,9 @@ socket.on("Your Companion Is", (message) => {
         hasCompanion = false
         checkConnection()
 
-        setTimeout(() => {
-            socket.connect()
-            console.log("retried to connect to the server")
-        }, 4000)
-    }
 
+
+    }
 })
 
 formOfinput.addEventListener("submit", (e) => {
@@ -182,11 +179,8 @@ socket.on("Your Companion Is", (message) => {
 socket.on("Find Someone New", (message) => {
     destSocket = ""
     hasCompanion = false
-    setTimeout(() => {
-        socket.connect()
-        console.log("reconnected")
-    }, 7000)
     checkConnection()
+    location.reload()
 })
 
 
