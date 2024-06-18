@@ -74,21 +74,13 @@ io.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         console.log('User disconnected:', socket.id);
-        // send a message to disconnect sockets
-        io.emit("Find Someone New", { message: "Find Someone New", status: 2002 })
-
-        // more optimised approach to reset sockets here
-        // if the waiting user leaves the chat
-        if (socket.id == waitingSocketID) {
-            if (user1) {
-                waitingSocketID = user1
-            }
+        // Clear waitingSocketID if the disconnected user was waiting
+        if (waitingSocketID === socket.id) {
+            waitingSocketID = null;
         }
-
-
+        // Notify other users to find a new companion
+        io.emit("Find Someone New", { message: "Find Someone New", status: 2002 });
     });
-
-
 
 });
 
