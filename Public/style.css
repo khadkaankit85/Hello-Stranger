@@ -1,0 +1,16 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+#main-body-of-home-page {
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://img.freepik.com/free-photo/abstract-fractal-particle-background_1048-15922.jpg?w=1480&t=st=1718678465~exp=1718679065~hmac=43e0d94ec6f37fccf37aa4c77f7aa3d9f66062020a120d54968a8bb9af8c69d7");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: unset
+}

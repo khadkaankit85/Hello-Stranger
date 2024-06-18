@@ -43,13 +43,6 @@ io.on('connection', (socket) => {
     socket.on("private message", (data) => {
         io.to(data.destSocket).emit("private message", data.message)
     })
-
-
-
-
-
-
-
     // console.log('A new user is Connected to the world chat with socket id: ', socket.id);
 
     // socket.on('message', (msg) => {
@@ -81,7 +74,9 @@ io.on('connection', (socket) => {
         console.log('User disconnected:', socket.id);
         // send a message to disconnect sockets
         io.emit("Find Someone New", { message: "Find Someone New", status: 2002 })
-        waitingSocketID = ""
+        if (socket.id == waitingSocketID) {
+            waitingSocketID = ""
+        }
     });
 
 
@@ -90,6 +85,6 @@ io.on('connection', (socket) => {
     })
 });
 
-server.listen(process.env.PORT || 3000, () => {
-    console.log('listening on *:' + (process.env.PORT || 3000));
+server.listen(3002, () => {
+    console.log('listening on *:' + (process.env.PORT || 3002));
 });

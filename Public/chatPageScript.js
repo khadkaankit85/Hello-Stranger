@@ -56,7 +56,14 @@ function checkConnection() {
 
 
 
-const socket = io()
+const socket = io({
+    reconnection: true,          // Enable reconnections
+    reconnectionAttempts: 5,     // Number of reconnection attempts before giving up
+    reconnectionDelay: 1000,     // Delay between each reconnection attempt (1 second)
+    reconnectionDelayMax: 5000,  // Maximum delay between reconnections (5 seconds)
+    timeout: 20000               // Connection timeout before failing (20 seconds)
+});
+
 const mainChat = document.getElementById("Main-chat-Body")
 const formOfinput = document.getElementById("chat-section-form")
 const messageInput = document.getElementById("chat-typing-inputbox")
@@ -91,11 +98,11 @@ let hasCompanion = false
 socket.on("Your Companion Is", (message) => {
     if (message.status === 2001) {
         console.log("user 2 ", message.CompanionID)
-        if (message.status == 4001) {
-            setTimeout(() => {
-                socket = io()
-            }, 7000)
-        }
+        // if (message.status == 4001) {
+        //     setTimeout(() => {
+        //         socket.connect()
+        //     }, 7000)
+        // }
         destSocket = message.CompanionID
         hasCompanion = true
         checkConnection()
@@ -171,9 +178,14 @@ socket.on("Your Companion Is", (message) => {
     console.log(message)
 })
 
+
 socket.on("Find Someone New", (message) => {
     destSocket = ""
     hasCompanion = false
+    setTimeout(() => {
+        socket.connect()
+        console.log("reconnected")
+    }, 7000)
     checkConnection()
 })
 
