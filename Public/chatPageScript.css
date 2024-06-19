@@ -5,10 +5,11 @@
 }
 
 body {
-    background: url("https://getwallpapers.com/wallpaper/full/d/3/a/513083.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: rgb(10, 10, 78);
+    background: rgb(4, 101, 93);
+    background: linear-gradient(299deg, rgba(4, 101, 93, 1) 24%, rgba(6, 0, 34, 1) 34%, rgba(18, 3, 51, 1) 46%, rgba(90, 17, 149, 1) 78%, rgba(89, 9, 105, 1) 94%, rgba(1, 1, 60, 1) 98%);
+    /* background-image: url("./Assets//cool-background.png"); */
 }
 
 #backgroundImageFilter {
@@ -17,9 +18,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background: linear-gradient(to right, rgba(0, 0, 255, 0.5), rgba(0, 0, 0, 0.5), rgba(255, 0, 0, 0.5));
-    z-index: 0;
-    backdrop-filter: blur(5px);
+    background: rgb(34, 193, 195);
+    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
 }
 
 
@@ -32,11 +32,16 @@ body {
     justify-content: center;
     /* align-items: center; */
     overflow: auto;
+
 }
 
 #chat-section-id {
     width: 80vw;
     height: 630px;
+    border-radius: 40px;
+    padding: 10px;
+    background: rgb(4, 101, 93);
+    background: linear-gradient(299deg, rgba(4, 101, 93, 1) 24%, rgba(6, 0, 34, 1) 34%, rgba(18, 3, 51, 1) 46%, rgba(90, 17, 149, 1) 78%, rgba(89, 9, 105, 1) 94%, rgba(1, 1, 60, 1) 98%);
 }
 
 #chat-with-strangers {
@@ -59,7 +64,7 @@ body {
 }
 
 .sentChatInnerText,
-.receivedChatInnertext {
+.receivedChatInnerText {
     padding: 15px;
     max-width: 500px;
     height: fit-content;
@@ -73,7 +78,7 @@ body {
 
 }
 
-.receivedChatInnertext {
+.receivedChatInnerText {
     background-color: rgb(78, 77, 77);
 
 }
@@ -123,6 +128,18 @@ input:focus {
     font-size: 25px;
 }
 
+#sendMessageButton:active {
+    all: initial;
+    font-size: 10px;
+
+}
+
+#sendMessageButton:focus {
+    all: initial;
+    font-size: 25px;
+
+}
+
 /* #sendMessageButton {
     background: none;
     border: none;
@@ -136,8 +153,9 @@ input:focus {
     height: fit-content;
     border-radius: 10px;
     min-height: 25px;
-    background: #5e5e5e;
+    background: #646464;
     color: white;
+    border: hidden;
 
 
 }
@@ -301,4 +319,19 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.chatDate {
+    text-align: center;
+    color: white;
+    font-size: 17px;
+    display: block;
+    margin: auto;
+}
+
+.alert {
+    margin: auto;
+    text-align: center;
+    color: white;
+    font-family: sans-serif;
 }

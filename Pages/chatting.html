@@ -18,15 +18,21 @@
         <div id="main-section-id">
             <div id="chat-section-id">
                 <div id="chat-section-body">
+
+                    <!-- <div class="sentChat">
+                        <div class="alert">
+                            this is an alert
+                        </div>
+                    </div> -->
                     <!-- <div class="sentChat">
                         <p class="sentChatInnerText">
                             Hello ankit how are you Lorem ipsum dolor sit amet consectetur adipisicing elit.
                             Autem
                             laudantium quas veniam magni vel! Cupiditate voluptates voluptas corrupti ipsa cum?
                         </p>
-                    </div> -->
+                    </div>
 
-                    <!-- <div class="receivedChat">
+                    <div class="receivedChat">
                         <p class="receivedChatInnertext">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi fugit ducimus
                             iusto minima natus sequi, itaque praesentium ad sapiente reprehenderit? Ratione maxime nulla
@@ -44,10 +50,10 @@
 
                 </div>
                 <form id="chat-section-form">
-                    <input type="text" id="chat-typing-inputbox">
+                    <input type="text" id="chat-typing-inputbox" autocomplete="off">
 
                     <button id="sendMessageButton" form="chat-section-form" type="submit">
-                        👍
+                        ❤️
                     </button>
 
                 </form>
@@ -92,21 +98,7 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="/chatPageScript.js"></script>
-    <!-- <script>
-
-        const sendButton = document.getElementById("sendMessageButton")
-        const messageInput = document.getElementById("chat-typing-inputbox")
-
-        messageInput.addEventListener('input', () => {
-            console.log("focused in the text field")
-            if (messageInput.value.trim("") == "") {
-                sendButton.innerText = "👍"
-            }
-            else {
-                sendButton.innerText = "⏩"
-            }
-        })
-    </script> -->
+    <!-- <script src="../Public/chatPageScript.js"></script> -->
 
 </body>
 

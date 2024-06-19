@@ -4,13 +4,100 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: black;
+}
 
 
-#main-body-of-home-page {
+#main-body-of-home-page,
+.hero,
+.hero2 {
     width: 100%;
-    height: 100vh;
-    background-image: url("https://img.freepik.com/free-photo/abstract-fractal-particle-background_1048-15922.jpg?w=1480&t=st=1718678465~exp=1718679065~hmac=43e0d94ec6f37fccf37aa4c77f7aa3d9f66062020a120d54968a8bb9af8c69d7");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: unset
+    height: 80vh;
+
+}
+
+.hero {
+    background: rgb(4, 101, 93);
+    background: linear-gradient(90deg, rgba(4, 101, 93, 1) 10%, rgba(35, 15, 125, 1) 21%, rgba(90, 17, 149, 1) 38%, rgba(89, 9, 105, 1) 53%, rgba(1, 1, 60, 1) 68%, rgba(29, 39, 175, 0.87718837535014) 82%, rgba(144, 10, 65, 1) 94%);
+    opacity: 0.6;
+    position: absolute;
+}
+
+.heroImage {
+    width: 100%;
+    height: 100%;
+}
+
+.hero2 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+}
+
+.hero2>div {
+    width: 50%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero2-first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+}
+
+.hero2-first-child-second-child {
+    display: flex;
+    color: white;
+    font-weight: 200;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.hero2-first-child>div>h2 {
+    text-align: left;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.hero2-first-child>div>p {
+    margin-top: 10px;
+    color: rgb(184, 162, 162);
+    width: 50%;
+    font-style: italic;
+
+}
+
+.linkto-anonymous-chat-page,
+.linkto-anonymous-video-page {
+    margin-top: 15px;
+    background-color: blue;
+    border: hidden;
+    border-radius: 7px;
+    padding: 8px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    min-width: fit-content;
+    gap: 5px;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.linkto-anonymous-chat-page:hover,
+.linkto-anonymous-video-page:hover {
+    background-color: rgb(92, 92, 231);
+    transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+
 }

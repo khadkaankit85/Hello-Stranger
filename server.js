@@ -23,14 +23,12 @@ app.get("/chat", (req, res) => {
 })
 // these two should be initialised outside because if initialized inside on connection event, it will reinitialised everytime a new user connects
 let waitingSocketID = ""
-let user1 = ""
 
 io.on('connection', (socket) => {
     console.log('connected')
     // if someone is waiting to chat
     if (waitingSocketID) {
         // we share the socket id of users with each other
-        user1 = socket.id
         io.to(socket.id).emit("Your Companion Is", { myID: socket.id, CompanionID: waitingSocketID, status: 2001 })
         io.to(waitingSocketID).emit("Your Companion Is", { myID: waitingSocketID, CompanionID: socket.id, status: 2001 })
         waitingSocketID = ""
@@ -39,7 +37,7 @@ io.on('connection', (socket) => {
     else {
         // if noone is waiting, make you wait xD
         waitingSocketID = socket.id
-        io.to(waitingSocketID).emit("Your Companion Is", "No companion found for you, please wait until someone joins the chat")
+        io.to(waitingSocketID).emit("Your Companion Is", { message: "Waiting For Someone To Join The Chat" })
     }
 
     socket.on("private message", (data) => {
@@ -81,7 +79,6 @@ io.on('connection', (socket) => {
         // Notify other users to find a new companion
         io.emit("Find Someone New", { message: "Find Someone New", status: 2002 });
     });
-
 });
 
 server.listen(3002, () => {
