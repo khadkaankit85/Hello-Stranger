@@ -37,7 +37,7 @@ body {
 
 #chat-section-id {
     width: 80vw;
-    height: 630px;
+    height: 650px;
     border-radius: 40px;
     padding: 10px;
     background: rgb(4, 101, 93);
@@ -61,6 +61,7 @@ body {
     border: hidden;
     margin: 10px 0px;
     width: 100%;
+    cursor: pointer;
 }
 
 .sentChatInnerText,
@@ -149,7 +150,9 @@ input:focus {
 #chat-section-form>input {
     font-family: monospace;
     padding: 4px;
-    width: 55%;
+    min-width: 55%;
+    width: fit-content;
+    max-width: 70%;
     height: fit-content;
     border-radius: 10px;
     min-height: 25px;

@@ -17,6 +17,22 @@ body {
 
 }
 
+#dialogue-box-for-chatting-options {
+    width: 100%;
+    height: 100%;
+}
+
+.dialogue-box-div-msg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 99vw;
+    height: 100vh;
+    border: 1px solid red;
+
+}
+
 .hero {
     background: rgb(4, 101, 93);
     background: linear-gradient(90deg, rgba(4, 101, 93, 1) 10%, rgba(35, 15, 125, 1) 21%, rgba(90, 17, 149, 1) 38%, rgba(89, 9, 105, 1) 53%, rgba(1, 1, 60, 1) 68%, rgba(29, 39, 175, 0.87718837535014) 82%, rgba(144, 10, 65, 1) 94%);
